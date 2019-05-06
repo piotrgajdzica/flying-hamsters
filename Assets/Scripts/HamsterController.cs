@@ -4,28 +4,45 @@ using UnityEngine;
 
 public class HamsterController : MonoBehaviour
 {
-    protected Vector2 velocity;
-    protected float gravityModifier = 0.1f;
-    protected float flightModifier = 1f;
 
+	public static HamsterController instance;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        velocity = Vector2.zero;
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 30;
-        Physics2D.gravity = new Vector2(0, -1.0F);
-    }
+	public float upForce = 2000f;
 
-    // Update is called once per frame
-    void Update()
-    {   
-        float vertical = Input.GetAxis("Vertical");
-        velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
-        velocity.y += vertical * Time.deltaTime;
-        Vector2 position = transform.position;
-        position += velocity;
-        transform.position = position;
-    }
+	private bool isDead = false;
+	private Rigidbody2D rb2d;
+	public Vector2 position;
+
+	// Start is called before the first frame update
+	void Start()
+	{
+		if(instance == null){
+			instance = this;
+			rb2d = GetComponent<Rigidbody2D>();
+			position = (Vector2)transform.position;
+		}
+		else if(instance != this){
+			Destroy(gameObject);
+		}
+
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		position = transform.position;
+		if(isDead == false){
+			if(Input.GetMouseButtonDown(0)){
+				rb2d.velocity = Vector2.zero;
+				rb2d.AddForce(new Vector2(0, upForce));
+			}
+		}
+	}
+
+	void OnCollisionEnter2D()
+	{
+		rb2d.velocity = Vector2.zero;
+		isDead = true;
+		GameControl.instance.HamsterDied();
+	}
 }
