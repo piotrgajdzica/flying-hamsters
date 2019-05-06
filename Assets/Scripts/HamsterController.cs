@@ -45,4 +45,11 @@ public class HamsterController : MonoBehaviour
 		isDead = true;
 		GameControl.instance.HamsterDied();
 	}
+
+
+
+	public void ForceBoost(float horizontal, float vertical){
+		rb2d.velocity = Vector2.zero;
+		rb2d.AddForce(new Vector2(horizontal, vertical));
+	}
 }
