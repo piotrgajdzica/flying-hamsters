@@ -13,6 +13,8 @@ public class HamsterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 30;
         Physics2D.gravity = new Vector2(0, -1.0F);
@@ -22,6 +24,12 @@ public class HamsterController : MonoBehaviour
     void Update()
     {   
         float vertical = Input.GetAxis("Vertical");
+
+        if(vertical != 0f){
+            //Unlock all
+            rb.constraints = RigidbodyConstraints2D.None;
+        }
+
         //velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         Vector2 velocity = rb.velocity;
         velocity.y += vertical * Time.deltaTime * flightModifier;
