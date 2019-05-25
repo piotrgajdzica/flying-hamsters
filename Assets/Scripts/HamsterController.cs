@@ -32,8 +32,12 @@ public class HamsterController : MonoBehaviour
 	{
 		position = transform.position;
 		if(isDead == false){
-			if(Input.GetMouseButtonDown(0)){
-				rb2d.velocity = Vector2.zero;
+            
+            Vector2 v = rb2d.velocity;
+            float angle = Mathf.Atan2(v.y, GameControl.instance.scrollSpeed) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, -angle + 180);
+
+            if (Input.GetMouseButtonDown(0)){
 				rb2d.AddForce(new Vector2(0, upForce));
 			}
 		}
