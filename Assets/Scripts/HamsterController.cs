@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,15 +8,26 @@ public class HamsterController : MonoBehaviour
 
 	public static HamsterController instance;
 
-	public float upForce = 2000f;
+    public float upForce = 2000f;
+    public float upNoEnergyForce = 20f;
 
-	private bool ballShield = false;
+    private bool ballShield = false;
 	private bool isDead = false;
-	private Rigidbody2D rb2d;
+	public Rigidbody2D rb2d;
 	public Vector2 position;
 
-	// Start is called before the first frame update
-	void Start()
+    public float startingEnergy = 100;
+    public float clickEnergy = 100;
+    public float currentEnergy;
+
+
+    void Awake()
+    {
+        currentEnergy = startingEnergy;
+    }
+
+    // Start is called before the first frame update
+    void Start()
 	{
 		if(instance == null){
 			instance = this;
@@ -38,11 +50,23 @@ public class HamsterController : MonoBehaviour
             float angle = Mathf.Atan2(v.y, GameControl.instance.scrollSpeed) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, -angle + 180);
 
-            if (Input.GetMouseButtonDown(0)){
-				rb2d.AddForce(new Vector2(0, upForce));
-			}
-		}
-	}
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (currentEnergy > clickEnergy)
+                {
+                    currentEnergy -= clickEnergy;
+                    rb2d.AddForce(new Vector2(0, upForce));
+                }
+                else
+                {
+
+                    rb2d.AddForce(new Vector2(0, upNoEnergyForce));
+                }
+            }
+        }
+        currentEnergy = Mathf.Min(Time.deltaTime * 5 + currentEnergy, startingEnergy);
+
+    }
 
 	void OnCollisionEnter2D()
 	{
