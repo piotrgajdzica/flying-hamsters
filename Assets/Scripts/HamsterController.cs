@@ -37,6 +37,7 @@ public class HamsterController : MonoBehaviour
 		else if(instance != this){
 			Destroy(gameObject);
 		}
+		instance.ForceBoost(GameControl.instance.initialBoost, 0);
 
 	}
 
@@ -47,13 +48,13 @@ public class HamsterController : MonoBehaviour
 		if(isDead == false){
             
             Vector2 v = rb2d.velocity;
-            float angle = Mathf.Atan2(v.y, GameControl.instance.scrollSpeed) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(v.y, GameControl.instance.initialBoost) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, -angle + 180);
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (currentEnergy > clickEnergy)
-                {
+	            if (currentEnergy > clickEnergy)
+               {
                     currentEnergy -= clickEnergy;
                     rb2d.AddForce(new Vector2(0, upForce));
                 }
@@ -83,7 +84,7 @@ public class HamsterController : MonoBehaviour
 
 
 	public void ForceBoost(float horizontal, float vertical){
-		rb2d.velocity = Vector2.zero;
+		//rb2d.velocity = Vector2.zero;
 		rb2d.AddForce(new Vector2(horizontal, vertical));
 	}
 
