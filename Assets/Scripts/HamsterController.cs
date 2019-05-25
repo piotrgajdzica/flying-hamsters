@@ -9,6 +9,7 @@ public class HamsterController : MonoBehaviour
 
 	public float upForce = 2000f;
 
+	private bool ballShield = false;
 	private bool isDead = false;
 	private Rigidbody2D rb2d;
 	public Vector2 position;
@@ -45,15 +46,24 @@ public class HamsterController : MonoBehaviour
 
 	void OnCollisionEnter2D()
 	{
-		rb2d.velocity = Vector2.zero;
-		isDead = true;
-		GameControl.instance.HamsterDied();
+		if(ballShield){
+			this.ForceBoost(0, GameControl.BOOST);
+			ballShield = false;
+		}
+		else{
+			rb2d.velocity = Vector2.zero;
+			isDead = true;
+			GameControl.instance.HamsterDied();
+		}
 	}
-
 
 
 	public void ForceBoost(float horizontal, float vertical){
 		rb2d.velocity = Vector2.zero;
 		rb2d.AddForce(new Vector2(horizontal, vertical));
+	}
+
+	public void ballPowerup(){
+		ballShield = true;
 	}
 }

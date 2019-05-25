@@ -275,7 +275,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.49, y: 4.03}
+    oldSize: {x: 12.49, y: 6.39}
     newSize: {x: 12.49, y: 4.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -417,7 +417,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.49, y: 4.03}
+    oldSize: {x: 12.49, y: 6.39}
     newSize: {x: 12.49, y: 4.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -944,6 +944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 653253069}
   - component: {fileID: 653253068}
+  - component: {fileID: 653253070}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -979,6 +980,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653253070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653253067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802f072e84aea9b4ca823500a71be2e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectiblePoolSize: 15
+  fanPrefab: {fileID: 1719534296759054402, guid: 71e8801f48de9204c875ad760d664754,
+    type: 3}
+  torpedoPrefab: {fileID: 2570391707984597558, guid: 9ea2a464b16dd914b9c136d0891735a1,
+    type: 3}
+  ballPrefab: {fileID: 546039407872403134, guid: 39a7eb6ba9b351844a7b6dfa8380d7d3,
+    type: 3}
+  spawnRate: 4
 --- !u!1 &942421519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,7 +1329,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.49, y: 4.03}
+    oldSize: {x: 12.49, y: 6.39}
     newSize: {x: 12.49, y: 4.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1644,7 +1665,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.49, y: 4.03}
+    oldSize: {x: 12.49, y: 6.39}
     newSize: {x: 12.49, y: 4.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
