@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class CollectiblePool : MonoBehaviour
@@ -9,11 +11,12 @@ public class CollectiblePool : MonoBehaviour
 	public GameObject fanPrefab;
 	public GameObject torpedoPrefab;
 	public GameObject ballPrefab;
+	public GameObject catapultPrefab;
 	public float spawnRate = 4f;
 	public static float collectibleYMin = 0f;
 	public static float collectibleYMax = 30f;
 	public static float collectibleXMinOffset = 10f;
-	public static float collectibleXMaxOffset = 40f;
+	public static float collectibleXMaxOffset = 50f;
 
 	private SpriteRenderer spriteRenderer;
 	private float groundHorizontalLength;
@@ -23,7 +26,7 @@ public class CollectiblePool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		collectibles = new GameObject[collectiblePoolSize];
+	    collectibles = new GameObject[collectiblePoolSize];
 		for(int i = 0; i < collectiblePoolSize; i = i + 3){
 			collectibles[i] = (GameObject) Instantiate(fanPrefab, objectPoolPosition, Quaternion.identity);
 			collectibles[i + 1] = (GameObject) Instantiate(ballPrefab, objectPoolPosition, Quaternion.identity);
@@ -35,7 +38,7 @@ public class CollectiblePool : MonoBehaviour
     void Update()
     {
 		for(int i = 0; i < collectiblePoolSize; i++){
-			if(GameControl.instance.gameOver == false && collectibles[i].transform.position.x < HamsterController.instance.position.x - 10f){
+			if(GameControl.instance.gameOver == false && collectibles[i].transform.position.x < HamsterController.instance.position.x - 20f){
 				changeCollectiblePosition(collectibles[i]);
 			}
 		}
