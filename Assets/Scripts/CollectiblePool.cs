@@ -10,10 +10,10 @@ public class CollectiblePool : MonoBehaviour
     public GameObject torpedoPrefab;
     public GameObject ballPrefab;
     public GameObject catapultPrefab;
-    public int fanCount = 0;
-    public int ballCount = 0;
-    public int torpedoCount = 0;
-    public int catapultCount = 2;
+    public const int fanCount = 2;
+    public const int ballCount = 2;
+    public const int torpedoCount = 2;
+    public const int catapultCount = 2;
     public int collectiblePoolSize;
     public float spawnRate = 4f;
     public static float collectibleYMin = 0f;

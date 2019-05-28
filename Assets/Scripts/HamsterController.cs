@@ -8,19 +8,21 @@ public class HamsterController : MonoBehaviour
     public static HamsterController instance;
 
     public const float upForce = 200f;
-    public const float upNoEnergyForce = 40f;
+    public const float upNoEnergyForce = 60f;
 
     private bool ballShield = false;
     private bool isDead = false;
     public Rigidbody2D rb2d;
+    public PillowController pillow;
     public Vector2 position;
+    public bool isPillowFired = false;
 
     public const float startingEnergy = 100.0f;
     public const float clickEnergy = 10.0f;
     public float currentEnergy;
 
     public Sprite armoredHamster;
- public Sprite normalHamster;
+    public Sprite normalHamster;
 
  void Awake()
     {
@@ -41,7 +43,7 @@ public class HamsterController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        instance.ForceBoost(GameControl.instance.initialBoost, 0);
+        instance.ForceBoost(0, GameControl.instance.initialBoost);
     }
 
     // Update is called once per frame
@@ -56,22 +58,34 @@ public class HamsterController : MonoBehaviour
             
             if (Input.GetMouseButtonDown(0))
             {
-                if (currentEnergy > clickEnergy)
+                if (!isPillowFired)
                 {
-
-                    Debug.Log("upforce: " + (upForce).ToString("R"));
-                    currentEnergy -= clickEnergy;
-                    rb2d.AddForce(new Vector2(0, upForce));
+                    firePillow();
                 }
-                else
-                {
-                    Debug.Log("no energy: " + (upNoEnergyForce).ToString("R"));
-                    rb2d.AddForce(new Vector2(0, upNoEnergyForce));
+                else {
+                    if (currentEnergy > clickEnergy)
+                    {
+
+                        Debug.Log("upforce: " + (upForce).ToString("R"));
+                        currentEnergy -= clickEnergy;
+                        rb2d.AddForce(new Vector2(0, upForce));
+                    }
+                    else
+                    {
+                        Debug.Log("no energy: " + (upNoEnergyForce).ToString("R"));
+                        rb2d.AddForce(new Vector2(0, upNoEnergyForce));
+                    }
                 }
             }
         }
 
         currentEnergy = Mathf.Min(Time.deltaTime * 5 + currentEnergy, startingEnergy);
+    }
+
+    void firePillow()
+    {
+        isPillowFired = true;
+        pillow.firePillow();
     }
 
     void OnCollisionEnter2D()
