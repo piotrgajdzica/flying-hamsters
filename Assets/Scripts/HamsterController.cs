@@ -84,9 +84,19 @@ public class HamsterController : MonoBehaviour
         }
         else
         {
-            rb2d.velocity = Vector2.zero;
-            isDead = true;
-            GameControl.instance.HamsterDied();
+            Debug.Log("x" + rb2d.velocity.x);
+            Debug.Log("y" + rb2d.velocity.y);
+            if (rb2d.velocity.x > Mathf.Abs(rb2d.velocity.y) && rb2d.velocity.x > 2f)
+            {
+                Vector2 newVelocity = new Vector2(rb2d.velocity.x, -rb2d.velocity.y);
+                rb2d.velocity = newVelocity;
+            }
+            else
+            {
+                rb2d.velocity = Vector2.zero;
+                isDead = true;
+                GameControl.instance.HamsterDied();
+            }
         }
     }
 
