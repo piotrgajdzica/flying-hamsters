@@ -342,7 +342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380511318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.1, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -360,12 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f608986a2534eac419982b05472633d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upForce: 300
-  upNoEnergyForce: 20
   rb2d: {fileID: 0}
   position: {x: 0, y: 0}
-  startingEnergy: 1000
-  clickEnergy: 100
   currentEnergy: 0
   armoredHamster: {fileID: 21300000, guid: 0b555ad8e8d9c9447a6ee779f632cc35, type: 3}
   normalHamster: {fileID: 21300000, guid: fa4c587d2b78d5a44b297651ab73c44b, type: 3}
@@ -524,7 +520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405815107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2790696, y: 2.6160007, z: -10}
+  m_LocalPosition: {x: 0.7576579, y: 4.6160007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -625,7 +621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802f072e84aea9b4ca823500a71be2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectiblePoolSize: 15
   fanPrefab: {fileID: 1719534296759054402, guid: 71e8801f48de9204c875ad760d664754,
     type: 3}
   torpedoPrefab: {fileID: 2570391707984597558, guid: 9ea2a464b16dd914b9c136d0891735a1,
@@ -634,6 +629,11 @@ MonoBehaviour:
     type: 3}
   catapultPrefab: {fileID: 4384211394753704969, guid: 6d8d626f28f09154a8fa8ddea92509d5,
     type: 3}
+  fanCount: 4
+  ballCount: 4
+  torpedoCount: 4
+  catapultCount: 2
+  collectiblePoolSize: 14
   spawnRate: 4
 --- !u!1 &963905476
 GameObject:
@@ -698,7 +698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963905476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2790696, y: 2.6160007, z: -10}
+  m_LocalPosition: {x: 0.7576579, y: 4.6160007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1739831016}
