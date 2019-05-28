@@ -10,19 +10,18 @@ public class CollectiblePool : MonoBehaviour
     public GameObject torpedoPrefab;
     public GameObject ballPrefab;
     public GameObject catapultPrefab;
-    public const int fanCount = 2;
-    public const int ballCount = 2;
-    public const int torpedoCount = 2;
-    public const int catapultCount = 2;
+    public const int fanCount = 7;
+    public const int ballCount = 7;
+    public const int torpedoCount = 7;
+    public const int catapultCount = 3;
     public int collectiblePoolSize;
-    public float spawnRate = 4f;
-    public static float collectibleYMin = 0f;
-    public static float collectibleYMax = 30f;
-    public static float collectibleXMinOffset = 10f;
-    public static float collectibleXMaxOffset = 50f;
-
-    private SpriteRenderer spriteRenderer;
-    private float groundHorizontalLength;
+    public static float collectibleYMin = 3;
+    public static float collectibleYMax = 50f;
+    public static float collectibleXMinOffset = 0f;
+    public static float collectibleXMaxOffset = 100f;
+    public static float appear = 35f;
+    public static float disappear = 9f;
+    
     private GameObject[] collectibles;
     private Vector2 objectPoolPosition = new Vector2(-15f, -25f);
 
@@ -57,28 +56,30 @@ public class CollectiblePool : MonoBehaviour
     {
         for (int i = 0; i < collectiblePoolSize - catapultCount; i++)
         {
+            ;
             if (GameControl.instance.gameOver == false &&
-                collectibles[i].transform.position.x < HamsterController.instance.position.x - 20f)
+                collectibles[i].transform.position.x < HamsterController.instance.position.x - disappear)
             {
-                collectibles[i].transform.position = getNewCollectiblePosition();
+                collectibles[i].transform.position = GetNewCollectiblePosition();
             }
         }
+
         for (int i = collectiblePoolSize - catapultCount; i < collectiblePoolSize; i++)
         {
             if (GameControl.instance.gameOver == false &&
-                collectibles[i].transform.position.x < HamsterController.instance.position.x - 20f)
+                collectibles[i].transform.position.x < HamsterController.instance.position.x - disappear)
             {
-                Vector2 vector = new Vector2(getNewCollectiblePosition().x, -7f);
+                Vector2 vector = new Vector2(GetNewCollectiblePosition().x, -7f);
                 collectibles[i].transform.position = vector;
             }
         }
     }
 
-    public static Vector2 getNewCollectiblePosition()
+    public static Vector2 GetNewCollectiblePosition()
     {
         float hamsterXPosition = HamsterController.instance.position.x;
         float spawnYPosition = Random.Range(collectibleYMin, collectibleYMax);
-        float spawnXPosition = Random.Range(hamsterXPosition + collectibleXMinOffset,
+        float spawnXPosition = Random.Range(HamsterController.instance.position.x + appear + collectibleXMinOffset,
             hamsterXPosition + collectibleXMaxOffset);
         return new Vector2(spawnXPosition, spawnYPosition);
     }

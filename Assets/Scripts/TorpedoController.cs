@@ -8,7 +8,7 @@ public class TorpedoController : MonoBehaviour
 		HamsterController hamster = other.GetComponent<HamsterController>();
 		if(hamster != null){
 			hamster.ForceBoost(GameControl.BOOST, 0);
-			transform.position = CollectiblePool.getNewCollectiblePosition();
+			transform.position = CollectiblePool.GetNewCollectiblePosition();
 		}
 	}
 }

@@ -8,7 +8,7 @@ public class BallController : MonoBehaviour
 		HamsterController hamster = other.GetComponent<HamsterController>();
 		if(hamster != null){
 			hamster.ballPowerup();
-			transform.position = CollectiblePool.getNewCollectiblePosition();
+			transform.position = CollectiblePool.GetNewCollectiblePosition();
 		}
 	}
 }
