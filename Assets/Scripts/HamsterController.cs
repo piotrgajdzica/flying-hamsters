@@ -7,16 +7,16 @@ public class HamsterController : MonoBehaviour
 {
     public static HamsterController instance;
 
-    public float upForce = 2000f;
-    public float upNoEnergyForce = 20f;
+    public const float upForce = 200f;
+    public const float upNoEnergyForce = 40f;
 
     private bool ballShield = false;
     private bool isDead = false;
     public Rigidbody2D rb2d;
     public Vector2 position;
 
-    public float startingEnergy = 100;
-    public float clickEnergy = 100;
+    public const float startingEnergy = 100.0f;
+    public const float clickEnergy = 10.0f;
     public float currentEnergy;
 
     public Sprite armoredHamster;
@@ -58,11 +58,14 @@ public class HamsterController : MonoBehaviour
             {
                 if (currentEnergy > clickEnergy)
                 {
+
+                    Debug.Log("upforce: " + (upForce).ToString("R"));
                     currentEnergy -= clickEnergy;
                     rb2d.AddForce(new Vector2(0, upForce));
                 }
                 else
                 {
+                    Debug.Log("no energy: " + (upNoEnergyForce).ToString("R"));
                     rb2d.AddForce(new Vector2(0, upNoEnergyForce));
                 }
             }
