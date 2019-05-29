@@ -15,8 +15,8 @@ public class CollectiblePool : MonoBehaviour
     public const int torpedoCount = 4;
     public const int catapultCount = 2;
     public int collectiblePoolSize;
-    public static float collectibleYMin = 3;
-    public static float collectibleYMax = 50f;
+    public static float collectibleYMin = 2;
+    public static float collectibleYMax = 75f;
     public static float collectibleXMinOffset = 0f;
     public static float collectibleXMaxOffset = 100f;
     public static float appear = 35f;

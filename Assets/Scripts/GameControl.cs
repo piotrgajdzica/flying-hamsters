@@ -36,7 +36,14 @@ public class GameControl : MonoBehaviour
 		}
 	}
 	
-	public void HamsterDied(){
+	public void HamsterDied(float distance){
 		gameOver = true;
-	}
+
+        float maxScore = PlayerPrefs.GetFloat("highScore", 0f);
+
+        if (distance > maxScore)
+            PlayerPrefs.SetFloat("highScore", distance);
+                
+
+    }
 }

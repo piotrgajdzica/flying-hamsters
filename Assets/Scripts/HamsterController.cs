@@ -77,12 +77,13 @@ public class HamsterController : MonoBehaviour
                     else
                     {
                         rb2d.AddForce(new Vector2(0, upNoEnergyForce));
+                        currentEnergy = 0;
                     }
                 }
             }
         }
 
-        currentEnergy = Mathf.Min(Time.deltaTime * 5 + currentEnergy, startingEnergy);
+        currentEnergy = Mathf.Min(Time.deltaTime * 10 + currentEnergy, startingEnergy);
     }
 
     void firstJump()
@@ -118,7 +119,7 @@ public class HamsterController : MonoBehaviour
             {
                 rb2d.velocity = Vector2.zero;
                 isDead = true;
-                GameControl.instance.HamsterDied();
+                GameControl.instance.HamsterDied(rb2d.position.x / 10f);
             }
         }
     }

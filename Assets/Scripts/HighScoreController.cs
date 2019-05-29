@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // The namespace for the UI stuff.
 
-public class PointsController : MonoBehaviour
+public class HighScoreController : MonoBehaviour
 {
     private HamsterController hamsterController;
     private Text m_TextComponent;
+    private float maxScore = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        maxScore = PlayerPrefs.GetFloat("highScore", 0f);
     }
 
     void Awake()
@@ -25,7 +26,7 @@ public class PointsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        m_TextComponent.text = "Distance: " + Mathf.Round(HamsterController.instance.rb2d.position.x / 10f) + " m";
+        m_TextComponent.text = "High score: " + Mathf.Round(maxScore) + " m";
     }
 }
+
