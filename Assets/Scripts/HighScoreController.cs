@@ -26,7 +26,10 @@ public class HighScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_TextComponent.text = "High score: " + Mathf.Round(maxScore) + " m";
+        if (m_TextComponent != null)
+        {
+            m_TextComponent.text = "High score: " + Mathf.Round(maxScore) + " m";
+        }
     }
 }
 

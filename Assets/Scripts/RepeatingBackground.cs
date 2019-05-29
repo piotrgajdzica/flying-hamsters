@@ -24,9 +24,11 @@ public class RepeatingBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HamsterController.instance.position.x - groundHorizontalLength > transform.position.x){
-			RepositionBackgroundHorizontal();
-		}
+        if (HamsterController.instance != null){
+            if (HamsterController.instance.position.x - groundHorizontalLength > transform.position.x) {
+                RepositionBackgroundHorizontal();
+            }
+        }
     }
 	
 	private void  RepositionBackgroundHorizontal(){

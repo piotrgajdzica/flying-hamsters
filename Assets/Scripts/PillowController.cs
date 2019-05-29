@@ -16,7 +16,6 @@ public class PillowController : MonoBehaviour
     public void firePillow()
     {
         rb2d.AddForce(new Vector2(force, 0));
-        Debug.Log("pillow");
     }
 
     // Update is called once per frame

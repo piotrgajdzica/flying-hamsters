@@ -25,7 +25,9 @@ public class PointsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        m_TextComponent.text = "Distance: " + Mathf.Round(HamsterController.instance.rb2d.position.x / 5f) + " m";
+        if (m_TextComponent != null)
+        {
+            m_TextComponent.text = "Distance: " + Mathf.Round(HamsterController.instance.rb2d.position.x / 5f) + " m";
+        }
     }
 }

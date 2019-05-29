@@ -113,8 +113,6 @@ public class HamsterController : MonoBehaviour
         }
         else
         {
-            Debug.Log("x" + rb2d.velocity.x);
-            Debug.Log("y" + rb2d.velocity.y);
             if (lastSpeed.x > Mathf.Abs(lastSpeed.y) && lastSpeed.x > 2f)
             {
                 Vector2 newVelocity = new Vector2(lastSpeed.x / 1.5f, -lastSpeed.y / 2f);

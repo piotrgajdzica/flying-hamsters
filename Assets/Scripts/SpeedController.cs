@@ -25,7 +25,9 @@ public class SpeedController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        m_TextComponent.text = "Speed: " + Math.Round(Mathf.Sqrt(Mathf.Pow(HamsterController.instance.rb2d.velocity.x / 5f, 2.0f) + Mathf.Pow(HamsterController.instance.rb2d.velocity.y / 3f, 2f)), 1) + " m/s";
+        if (m_TextComponent != null)
+        {
+            m_TextComponent.text = "Speed: " + Math.Round(Mathf.Sqrt(Mathf.Pow(HamsterController.instance.rb2d.velocity.x / 5f, 2.0f) + Mathf.Pow(HamsterController.instance.rb2d.velocity.y / 3f, 2f)), 1) + " m/s";
+        }
     }
 }
