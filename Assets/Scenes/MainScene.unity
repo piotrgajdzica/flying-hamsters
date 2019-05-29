@@ -453,7 +453,7 @@ Transform:
   m_GameObject: {fileID: 380511318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -5.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1849129, y: 1.1849129, z: 1.1849129}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -474,6 +474,7 @@ MonoBehaviour:
   pillow: {fileID: 2069088449}
   position: {x: 0, y: 0}
   isPillowFired: 0
+  didFirstJump: 0
   currentEnergy: 0
   armoredHamster: {fileID: 21300000, guid: 0b555ad8e8d9c9447a6ee779f632cc35, type: 3}
   normalHamster: {fileID: 21300000, guid: fa4c587d2b78d5a44b297651ab73c44b, type: 3}
@@ -609,7 +610,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 10.81296
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -633,7 +634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405815107}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.02, y: -5.6, z: -10}
+  m_LocalPosition: {x: 13.02, y: -5.48, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1460,30 +1461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d1846899864fb43b1695439c811151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1709962639
 Rigidbody2D:
   serializedVersion: 4
@@ -1656,7 +1633,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 2.1146617
+  m_Mass: 3.1992717
   m_LinearDrag: 0.98
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1721,8 +1698,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069088444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.445, y: 0.172, z: 0}
-  m_LocalScale: {x: 3.3809943, y: 3.3809943, z: 3.3809943}
+  m_LocalPosition: {x: -1.445, y: 1.97, z: 0}
+  m_LocalScale: {x: 4.158623, y: 4.158623, z: 4.158623}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
