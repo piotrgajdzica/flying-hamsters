@@ -8,7 +8,7 @@ public class GameControl : MonoBehaviour
 {
 	public static GameControl instance;
 	public bool gameOver = false;
-	public float initialBoost = 1000f;
+	public const float initialBoost = 1500f;
 	public static float BOOST = 1000f;
 	
     // Start is called before the first frame update

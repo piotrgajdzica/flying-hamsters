@@ -13,7 +13,7 @@ public class CatapultController : MonoBehaviour
         hamster.rb2d.velocity = new Vector2(hamster.rb2d.velocity.x, 0f);
 
         if (hamster != null){
-            hamster.ForceBoost(GameControl.BOOST / 2, -2 * hamster.rb2d.velocity.y + GameControl.BOOST);
+            hamster.ForceBoost(GameControl.BOOST, -2 * hamster.rb2d.velocity.y + 2 * GameControl.BOOST);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class HamsterController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class HamsterController : MonoBehaviour
 
     private bool ballShield = false;
     private bool isDead = false;
+    private Vector2 lastSpeed = new Vector2(0f, 0f);
     public Rigidbody2D rb2d;
     public PillowController pillow;
     public Vector2 position;
@@ -84,12 +86,14 @@ public class HamsterController : MonoBehaviour
         }
 
         currentEnergy = Mathf.Min(Time.deltaTime * 10 + currentEnergy, startingEnergy);
+        
+        lastSpeed = rb2d.velocity;
     }
 
     void firstJump()
     {
         rb2d.constraints = RigidbodyConstraints2D.None;
-        instance.ForceBoost(0, GameControl.instance.initialBoost);
+        instance.ForceBoost(0, (float)((new Random().NextDouble() / 2.0 + 0.5)* GameControl.initialBoost));
     }
 
     void firePillow()
@@ -98,6 +102,7 @@ public class HamsterController : MonoBehaviour
         pillow.firePillow();
     }
 
+    
     void OnCollisionEnter2D()
     {
         if (ballShield)
@@ -110,16 +115,16 @@ public class HamsterController : MonoBehaviour
         {
             Debug.Log("x" + rb2d.velocity.x);
             Debug.Log("y" + rb2d.velocity.y);
-            if (rb2d.velocity.x > Mathf.Abs(rb2d.velocity.y) && rb2d.velocity.x > 2f)
+            if (lastSpeed.x > Mathf.Abs(lastSpeed.y) && lastSpeed.x > 2f)
             {
-                Vector2 newVelocity = new Vector2(rb2d.velocity.x, -rb2d.velocity.y);
+                Vector2 newVelocity = new Vector2(lastSpeed.x / 1.5f, -lastSpeed.y / 2f);
                 rb2d.velocity = newVelocity;
             }
-            else
+            else if(rb2d.position.y < -3f)
             {
                 rb2d.velocity = Vector2.zero;
                 isDead = true;
-                GameControl.instance.HamsterDied(rb2d.position.x / 10f);
+                GameControl.instance.HamsterDied(rb2d.position.x / 5f);
             }
         }
     }

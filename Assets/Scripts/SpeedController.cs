@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.UI; // The namespace for the UI stuff.
+using UnityEngine.UI;
 
-public class PointsController : MonoBehaviour
+public class SpeedController : MonoBehaviour
 {
     private HamsterController hamsterController;
     private Text m_TextComponent;
@@ -11,21 +12,20 @@ public class PointsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     void Awake()
     {
         // Get a reference to the text component
         m_TextComponent = GetComponent<Text>();
-
-        m_TextComponent.text = "This is the new text.";
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        m_TextComponent.text = "Distance: " + Mathf.Round(HamsterController.instance.rb2d.position.x / 5f) + " m";
+        m_TextComponent.text = "Speed: " + Math.Round(Mathf.Sqrt(Mathf.Pow(HamsterController.instance.rb2d.velocity.x / 5f, 2.0f) + Mathf.Pow(HamsterController.instance.rb2d.velocity.y / 3f, 2f)), 1) + " m/s";
     }
 }
