@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
     private Vector3 offset;
-    private float minimumBoundary = 4f;
+    private float minimumBoundary = 2.8f;
 
     void Start()
     {

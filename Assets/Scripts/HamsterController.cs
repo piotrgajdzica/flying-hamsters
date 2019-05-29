@@ -16,6 +16,7 @@ public class HamsterController : MonoBehaviour
     public PillowController pillow;
     public Vector2 position;
     public bool isPillowFired = false;
+    public bool didFirstJump = false;
 
     public const float startingEnergy = 100.0f;
     public const float clickEnergy = 10.0f;
@@ -42,8 +43,7 @@ public class HamsterController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        instance.ForceBoost(0, GameControl.instance.initialBoost);
+        rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     // Update is called once per frame
@@ -58,21 +58,24 @@ public class HamsterController : MonoBehaviour
             
             if (Input.GetMouseButtonDown(0))
             {
-                if (!isPillowFired)
+                if (!didFirstJump)
+                {
+                    firstJump();
+                    didFirstJump = true;
+                }
+                else if (!isPillowFired)
                 {
                     firePillow();
                 }
                 else {
                     if (currentEnergy > clickEnergy)
                     {
-
-                        Debug.Log("upforce: " + (upForce).ToString("R"));
+                        
                         currentEnergy -= clickEnergy;
                         rb2d.AddForce(new Vector2(0, upForce));
                     }
                     else
                     {
-                        Debug.Log("no energy: " + (upNoEnergyForce).ToString("R"));
                         rb2d.AddForce(new Vector2(0, upNoEnergyForce));
                     }
                 }
@@ -80,6 +83,12 @@ public class HamsterController : MonoBehaviour
         }
 
         currentEnergy = Mathf.Min(Time.deltaTime * 5 + currentEnergy, startingEnergy);
+    }
+
+    void firstJump()
+    {
+        rb2d.constraints = RigidbodyConstraints2D.None;
+        instance.ForceBoost(0, GameControl.instance.initialBoost);
     }
 
     void firePillow()
